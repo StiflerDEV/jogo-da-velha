@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <style>
+        .tabela {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            gap: 2px;
+        }
+        .quadrado {
+            width: 100px;
+            height: 100px;
+            background: lightgray;
+            font-size: 40px;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Jogo da Velha</h1>
+    <p id="status">Vez do jogador X</p>
+    <div class="tabela">
+        <div class="quadrado" onclick="clicar(0)"></div>
+        <div class="quadrado" onclick="clicar(1)"></div>
+        <div class="quadrado" onclick="clicar(2)"></div>
+        <div class="quadrado" onclick="clicar(3)"></div>
+        <div class="quadrado" onclick="clicar(4)"></div>
+        <div class="quadrado" onclick="clicar(5)"></div>
+        <div class="quadrado" onclick="clicar(6)"></div>
+        <div class="quadrado" onclick="clicar(7)"></div>
+        <div class="quadrado" onclick="clicar(8)"></div>
+    </div>
+
+    <button onclick="reset()">Reiniciar</button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
