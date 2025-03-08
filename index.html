@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .tabela {
+            display: grid;
+            grid-template-columns: repeat(3, 60px);
+            grid-template-rows: repeat(3, 60px);
+            gap: 5px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .quadrado {
+            width: 60px;
+            height: 60px;
+            background-color: lightgray;
+            border: 1px solid black;
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo da Velha</h1>
+    <p id="status">Vez do jogador X</p>
+    <div class="tabela"></div>
+    <button onclick="reiniciar()">Reiniciar</button>
+
+    <script>
+        let jogo = ["", "", "", "", "", "", "", "", ""];
+        let vez = "X";
+
+        function clicar(index) {
+            if (jogo[index] === "") {
+                jogo[index] = vez;
+                vez = vez === "X" ? "O" : "X";
+                atualizar();
+            }
+        }
+
+        function atualizar() {
+            let quadrados = document.getElementsByClassName("quadrado");
+            for (let i = 0; i < 9; i++) {
+                quadrados[i].textContent = jogo[i];
+            }
+            document.getElementById("status").textContent = "Vez do jogador " + vez;
+        }
+
+        function reiniciar() {
+            jogo = ["", "", "", "", "", "", "", "", ""];
+            vez = "X";
+            atualizar();
+        }
+
+        let container = document.querySelector(".tabela");
+        for (let i = 0; i < 9; i++) {
+            let quadrado = document.createElement("div");
+            quadrado.classList.add("quadrado");
+            quadrado.addEventListener("click", () => clicar(i));
+            container.appendChild(quadrado);
+        }
+
+        atualizar();
+    </script>
+</body>
+</html>
