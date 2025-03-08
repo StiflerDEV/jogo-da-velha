@@ -2,81 +2,44 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Velha</title>
+    <title>Jogo da Cobrinha</title>
     <style>
         body {
-            text-align: center;
             font-family: Arial, sans-serif;
-        }
-
-        .tabela {
-            display: grid;
-            grid-template-columns: repeat(3, 60px);
-            grid-template-rows: repeat(3, 60px);
-            gap: 5px;
-            justify-content: center;
-            margin: 20px auto;
-        }
-
-        .quadrado {
-            width: 60px;
-            height: 60px;
-            background-color: lightgray;
-            border: 1px solid black;
-            font-size: 24px;
             text-align: center;
-            line-height: 60px;
-            cursor: pointer;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
         }
 
         button {
+            background: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
             margin-top: 10px;
-            padding: 8px;
+        }
+
+        button:hover {
+            background: darkgreen;
         }
     </style>
 </head>
 <body>
-    <h1>Jogo da Velha</h1>
-    <p id="status">Vez do jogador X</p>
-    <div class="tabela"></div>
-    <button onclick="reiniciar()">Reiniciar</button>
-
-    <script>
-        let jogo = ["", "", "", "", "", "", "", "", ""];
-        let vez = "X";
-
-        function clicar(index) {
-            if (jogo[index] === "") {
-                jogo[index] = vez;
-                vez = vez === "X" ? "O" : "X";
-                atualizar();
-            }
-        }
-
-        function atualizar() {
-            let quadrados = document.getElementsByClassName("quadrado");
-            for (let i = 0; i < 9; i++) {
-                quadrados[i].textContent = jogo[i];
-            }
-            document.getElementById("status").textContent = "Vez do jogador " + vez;
-        }
-
-        function reiniciar() {
-            jogo = ["", "", "", "", "", "", "", "", ""];
-            vez = "X";
-            atualizar();
-        }
-
-        let container = document.querySelector(".tabela");
-        for (let i = 0; i < 9; i++) {
-            let quadrado = document.createElement("div");
-            quadrado.classList.add("quadrado");
-            quadrado.addEventListener("click", () => clicar(i));
-            container.appendChild(quadrado);
-        }
-
-        atualizar();
-    </script>
+    <div class="container">
+        <h1>Jogo da Cobrinha</h1>
+        <p>O jogo da cobrinha é um clássico dos celulares antigos.</p>
+        <p>Use as setas do teclado para controlar a cobra e comer a comida.</p>
+        <p>Se bater na parede ou em si mesma, o jogo acaba.</p>
+        <a href="cobrinha.py" download><button>Baixar Jogo</button></a>
+    </div>
 </body>
 </html>
